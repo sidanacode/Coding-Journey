@@ -2,3 +2,4 @@
 ".idea"
 anaconda_projects
 .DS_Store
+venv
