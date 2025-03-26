@@ -1,25 +1,16 @@
-from flask import Flask , render_template
+from flask import Flask , render_template , url_for , redirect
 app = Flask(__name__)
 
 #! decorator
 @app.route("/") # endpoint
 def home():
-    return render_template("home.html")
+    return render_template("home.html",title="Home")
 @app.route("/about")
 def about():
-    return render_template("about.html")
-# path parameter
-@app.route("/welcome/<name>")
-def welcome(name):
-    return f"<h1>Hi ,{name.title()},you'r welcome</h1>"
-@app.route("/addition/<int:num>")
-def addition(num):
-    return f"<h1>input is {num} output is {num+10}</h1>"
-# multiple path parameter
-@app.route("/addition_two/<int:num1>/<int:num2>")
-def addition_two(num1,num2):
-    return f"<h1>{num1}+{num2} is {num1+num2}"
-
+    return render_template("about.html",title="About")
+@app.route("/evaluate/<int:num>")
+def evaluate(num):
+    return render_template("evaluate.html",number = num)
 # start the app
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=8000)
